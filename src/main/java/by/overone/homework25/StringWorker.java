@@ -22,4 +22,5 @@ public class StringWorker {
     public boolean isEmptyString(String str){
         return str.isBlank();
     }
+
 }
