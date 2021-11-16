@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class StringWorker {
 
     public int getWordsAmount(String str){
-        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Pattern p = Pattern.compile("[^?!. -]\\S*");
         Matcher m = p.matcher(str);
         int amount = 0;
         while (m.find()) {
