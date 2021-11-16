@@ -1,6 +1,7 @@
 package by.overone.homework25;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -40,6 +41,7 @@ class StringWorkerTest {
         assertFalse(stringWorker.isEmptyString("one true"));
     }
 
+    @Disabled("For example")
     @Test
     public void checkChangedString(){
         assertEquals("S%r%h is % wom%n", stringWorker.changeString("  Sarah is a woman        "));
