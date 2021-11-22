@@ -22,4 +22,17 @@ class AnalysisTest {
                 Arguments.of("a a a s o", "a"));
     }
 
+    @ParameterizedTest
+    @MethodSource("dataLeastRecent")
+    public void checkLeastRecent(String pass, String expected){
+        assertEquals(expected,Analysis.findLeastRecent(pass));
+    }
+
+    private static Stream<Arguments> dataLeastRecent(){
+        return Stream.of(Arguments.of("the are nine are","the"),
+                Arguments.of("nine root nine root", "nine"),
+                Arguments.of("a a a s o o", "s"));
+    }
+
+
 }
