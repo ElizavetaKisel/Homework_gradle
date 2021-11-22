@@ -34,5 +34,15 @@ class AnalysisTest {
                 Arguments.of("a a a s o o", "s"));
     }
 
+    @ParameterizedTest
+    @MethodSource("dataLonger")
+    public void checkLonger(String pass, String expected){
+        assertEquals(expected,Analysis.findLonger(pass));
+    }
 
+    private static Stream<Arguments> dataLonger(){
+        return Stream.of(Arguments.of("the are nine are","nine"),
+                Arguments.of("nine root nine root", "nine"),
+                Arguments.of("a aa s ooo o o", "ooo"));
+    }
 }
