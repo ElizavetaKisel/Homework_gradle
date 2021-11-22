@@ -29,4 +29,13 @@ public class Analysis {
                 .orElse(new AbstractMap.SimpleEntry<>(null, null))
                 .getKey();
     }
+
+    public static String findLonger(String text){
+        String[] words;
+        words = text.split(" ");
+        String result = "";
+        Arrays.sort(words, Comparator.comparing(String::length, Comparator.reverseOrder()));
+        result = words[0].length() > result.length() ? words[0] : result;
+        return result;
+    }
 }
