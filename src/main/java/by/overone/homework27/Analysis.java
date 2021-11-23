@@ -46,9 +46,9 @@ public class Analysis {
         String[] words;
         words = text.split("\\W+");
         String result = Arrays.stream(words)
-                .filter(s -> s.matches("\\d{3,}"))
+                .filter(s -> s.matches("\\d{4}"))
                 .distinct()
-                .filter(s -> !s.startsWith("0"))
+                .filter(s -> s.startsWith("1"))
                 .collect(Collectors.joining(", "));
         return result.isBlank() ? "There are no years here" : result;
     }
