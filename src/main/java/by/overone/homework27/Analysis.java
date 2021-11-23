@@ -38,4 +38,14 @@ public class Analysis {
         result = words[0].length() > result.length() ? words[0] : result;
         return result;
     }
+
+    public static String findYears(String text){
+        String[] words;
+        words = text.split("\\W+");
+        String result = Arrays.stream(words)
+                .filter(s -> s.matches("[0-9]{3,}"))
+                .distinct()
+                .collect(Collectors.joining(", "));
+        return result;
+    }
 }
