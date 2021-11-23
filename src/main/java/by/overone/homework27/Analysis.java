@@ -9,7 +9,7 @@ public class Analysis {
     public static String findMostRecent(String text){
         String[] words;
         String text2 = text.replace("\r", "").replace("\n", " ");
-        words = text2.split("[\\d !?.,:;—]+");
+        words = text2.split("[\\d !?.,:(){}/;*—]+");
         return Arrays.stream(words)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
@@ -22,7 +22,7 @@ public class Analysis {
     public static String findLeastRecent(String text){
         String[] words;
         String text2 = text.replace("\r", "").replace("\n", " ");
-        words = text2.split("[\\d !?.,:;—]+");
+        words = text2.split("[\\d !?.,:;(){}/*—]+");
         return Arrays.stream(words)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
@@ -35,7 +35,7 @@ public class Analysis {
     public static String findLonger(String text){
         String[] words;
         String text2 = text.replace("\r", "").replace("\n", " ");
-        words = text2.split("[\\d !?.,:;—]+");
+        words = text2.split("[\\d !?.,:;(){}/*—]+");
         String result = "";
         Arrays.sort(words, Comparator.comparing(String::length, Comparator.reverseOrder()));
         result = words[0].length() > result.length() ? words[0] : result;

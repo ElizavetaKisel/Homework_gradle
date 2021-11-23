@@ -1,6 +1,9 @@
 package by.overone.homework27;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.*;
+import java.net.URL;
 
 public class Main {
 
@@ -25,6 +28,10 @@ public class Main {
         Hero hero4Restored = (Hero) objectInputStream.readObject();
         objectInputStream.close();
 
+        URL website1 = new URL("https://www.gutenberg.org/files/1112/1112.txt");
+        File file1 = new File("Romeo&Juliet.txt");
+        FileUtils.copyURLToFile(website1, file1);
+
         FileInputStream inputStream = new FileInputStream("Romeo&Juliet.txt");
         StringBuilder stringBuilder = new StringBuilder();
         int i;
@@ -44,6 +51,11 @@ public class Main {
         outputStream.write(bytes);
         outputStream.close();
 
+
+        URL website2 = new URL("https://www.gutenberg.org/files/2600/2600-0.txt");
+        File file2 = new File("voina_i_mir.txt");
+        FileUtils.copyURLToFile(website2, file2);
+
         FileReader reader = new FileReader("voina_i_mir.txt");
         StringBuilder stringBuilder1 = new StringBuilder();
         int c;
@@ -56,7 +68,7 @@ public class Main {
         FileWriter writer = new FileWriter("result.txt", true);
         StringBuilder result2 = new StringBuilder();
 
-        result2 = CompBuilder.shortAppend(result2, text, hero3Restored, hero4Restored);
+        result2 = CompBuilder.shortAppend(result2, text2, hero3Restored, hero4Restored);
 
         writer.write(result2.toString());
         writer.close();
