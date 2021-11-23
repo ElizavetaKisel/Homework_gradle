@@ -45,6 +45,7 @@ public class Analysis {
         String result = Arrays.stream(words)
                 .filter(s -> s.matches("[0-9]{3,}"))
                 .distinct()
+                .filter(s -> !s.startsWith("0"))
                 .collect(Collectors.joining(", "));
         return result.isBlank() ? "There are no years here" : result;
     }
