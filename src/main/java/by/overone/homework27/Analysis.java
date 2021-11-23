@@ -8,7 +8,8 @@ public class Analysis {
 
     public static String findMostRecent(String text){
         String[] words;
-        words = text.split("[0-9\\W]+");
+        String text2 = text.replace("\r", "").replace("\n", " ");
+        words = text2.split("[\\d !?.,:;—]+");
         return Arrays.stream(words)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
@@ -20,7 +21,8 @@ public class Analysis {
 
     public static String findLeastRecent(String text){
         String[] words;
-        words = text.split("[0-9\\W]+");
+        String text2 = text.replace("\r", "").replace("\n", " ");
+        words = text2.split("[\\d !?.,:;—]+");
         return Arrays.stream(words)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
@@ -32,7 +34,8 @@ public class Analysis {
 
     public static String findLonger(String text){
         String[] words;
-        words = text.split("[0-9\\W]+");
+        String text2 = text.replace("\r", "").replace("\n", " ");
+        words = text2.split("[\\d !?.,:;—]+");
         String result = "";
         Arrays.sort(words, Comparator.comparing(String::length, Comparator.reverseOrder()));
         result = words[0].length() > result.length() ? words[0] : result;
@@ -43,7 +46,7 @@ public class Analysis {
         String[] words;
         words = text.split("\\W+");
         String result = Arrays.stream(words)
-                .filter(s -> s.matches("[0-9]{3,}"))
+                .filter(s -> s.matches("\\d{3,}"))
                 .distinct()
                 .filter(s -> !s.startsWith("0"))
                 .collect(Collectors.joining(", "));
