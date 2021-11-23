@@ -46,6 +46,6 @@ public class Analysis {
                 .filter(s -> s.matches("[0-9]{3,}"))
                 .distinct()
                 .collect(Collectors.joining(", "));
-        return result;
+        return result.isBlank() ? "There are no years here" : result;
     }
 }

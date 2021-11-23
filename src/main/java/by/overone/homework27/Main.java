@@ -19,5 +19,6 @@ public class Main {
         System.out.println(Analysis.findLeastRecent(text));
         System.out.println(Analysis.findMostRecent(text));
         System.out.println(Analysis.findLonger(text));
+        System.out.println(Analysis.findYears(text));
     }
 }

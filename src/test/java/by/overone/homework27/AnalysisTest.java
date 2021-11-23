@@ -45,4 +45,16 @@ class AnalysisTest {
                 Arguments.of("nine. root!! nine root", "nine"),
                 Arguments.of("a aa s ooo o o", "ooo"));
     }
+
+    @ParameterizedTest
+    @MethodSource("dataYears")
+    public void checkYears(String pass, String expected){
+        assertEquals(expected,Analysis.findYears(pass));
+    }
+
+    private static Stream<Arguments> dataYears(){
+        return Stream.of(Arguments.of("the 1988 1988 nine a","1988"),
+                Arguments.of("nine. 899 1432 5 nine root", "899, 1432"),
+                Arguments.of("nine. nine root", "There are no years here"));
+    }
 }
