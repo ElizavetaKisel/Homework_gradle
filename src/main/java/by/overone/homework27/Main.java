@@ -17,10 +17,11 @@ public class Main {
         }
         inputStream.close();
         String text = stringBuilder.toString();
-        System.out.println(Analysis.findLeastRecent(text));
-        System.out.println(Analysis.findMostRecent(text));
-        System.out.println(Analysis.findLonger(text));
-        System.out.println(Analysis.findYears(text));
+        System.out.println("*Romeo & Juliet*");
+        System.out.println("Самое редко встречающееся слово: " + Analysis.findLeastRecent(text));
+        System.out.println("Cамое часто встречающееся слово: " + Analysis.findMostRecent(text));
+        System.out.println("Cамое длинное слово: " + Analysis.findLonger(text));
+        System.out.println("Все годы, избегая повторений: " + Analysis.findYears(text) + "\n");
 
         FileReader reader = new FileReader("voina_i_mir.txt");
         StringBuilder stringBuilder1 = new StringBuilder();
@@ -30,10 +31,11 @@ public class Main {
         }
         reader.close();
         String text2 = stringBuilder1.toString();
-        System.out.println(Analysis.findLeastRecent(text2));
-        System.out.println(Analysis.findMostRecent(text2));
-        System.out.println(Analysis.findLonger(text2));
-        System.out.println(Analysis.findYears(text2));
+        System.out.println("*Война и мир*");
+        System.out.println("Самое редко встречающееся слово: " + Analysis.findLeastRecent(text2));
+        System.out.println("Cамое часто встречающееся слово: " + Analysis.findMostRecent(text2));
+        System.out.println("Cамое длинное слово: " + Analysis.findLonger(text2));
+        System.out.println("Все годы, избегая повторений: " + Analysis.findYears(text2));
 
     }
 }
