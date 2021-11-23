@@ -4,7 +4,26 @@ import java.io.*;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+
+        Hero hero1 = new Hero("Romeo", "male");
+        Hero hero2 = new Hero("Juliet", "female");
+        Hero hero3 = new Hero("Наташа Ростова", "female");
+        Hero hero4 = new Hero("Андрей Балконский", "male");
+
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("serialization.txt", true));
+        objectOutputStream.writeObject(hero1);
+        objectOutputStream.writeObject(hero2);
+        objectOutputStream.writeObject(hero3);
+        objectOutputStream.writeObject(hero4);
+        objectOutputStream.close();
+
+        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("serialization.txt"));
+        Hero hero1Restored = (Hero) objectInputStream.readObject();
+        Hero hero2Restored = (Hero) objectInputStream.readObject();
+        Hero hero3Restored = (Hero) objectInputStream.readObject();
+        Hero hero4Restored = (Hero) objectInputStream.readObject();
+        objectInputStream.close();
 
         FileInputStream inputStream = new FileInputStream("Romeo&Juliet.txt");
         StringBuilder stringBuilder = new StringBuilder();
@@ -19,11 +38,7 @@ public class Main {
         FileOutputStream outputStream = new FileOutputStream("result.txt");
         StringBuilder result = new StringBuilder();
 
-        result.append("*Romeo & Juliet*"+ "\n");
-        result.append("Самое редко встречающееся слово: " + Analysis.findLeastRecent(text)+ "\n");
-        result.append("Самое часто встречающееся слово: " + Analysis.findMostRecent(text)+ "\n");
-        result.append("Самое длинное слово: " + Analysis.findLonger(text)+ "\n");
-        result.append("Все годы, избегая повторений: " + Analysis.findYears(text) + "\n\n");
+        result = CompBuilder.shortAppend(result, text, hero1Restored, hero2Restored);
 
         byte[] bytes = result.toString().getBytes();
         outputStream.write(bytes);
@@ -41,11 +56,7 @@ public class Main {
         FileWriter writer = new FileWriter("result.txt", true);
         StringBuilder result2 = new StringBuilder();
 
-        result2.append("*Война и мир*"+ "\n");
-        result2.append("Самое редко встречающееся слово: " + Analysis.findLeastRecent(text2)+ "\n");
-        result2.append("Самое часто встречающееся слово: " + Analysis.findMostRecent(text2)+ "\n");
-        result2.append("Самое длинное слово: " + Analysis.findLonger(text2)+ "\n");
-        result2.append("Все годы, избегая повторений: " + Analysis.findYears(text2)+ "\n\n");
+        result2 = CompBuilder.shortAppend(result2, text, hero3Restored, hero4Restored);
 
         writer.write(result2.toString());
         writer.close();
