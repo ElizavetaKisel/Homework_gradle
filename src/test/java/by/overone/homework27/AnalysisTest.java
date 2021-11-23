@@ -30,7 +30,7 @@ class AnalysisTest {
 
     private static Stream<Arguments> dataLeastRecent(){
         return Stream.of(Arguments.of("the are nine are","the"),
-                Arguments.of("nine root nine root", "nine"),
+                Arguments.of("nine root nine! root", "nine"),
                 Arguments.of("a a a s o o", "s"));
     }
 
@@ -41,8 +41,8 @@ class AnalysisTest {
     }
 
     private static Stream<Arguments> dataLonger(){
-        return Stream.of(Arguments.of("the are nine are","nine"),
-                Arguments.of("nine root nine root", "nine"),
+        return Stream.of(Arguments.of("the nine a","nine"),
+                Arguments.of("nine. root!! nine root", "nine"),
                 Arguments.of("a aa s ooo o o", "ooo"));
     }
 }
